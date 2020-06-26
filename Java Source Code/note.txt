@@ -1,0 +1,23 @@
+hadoop fs -copyToLocal /user/s3400652/Assignment-0.0.1-SNAPSHOT.jar /home/hadoop/
+hadoop jar Assignment-0.0.1-SNAPSHOT.jar /user/s3400652/green_tripdata_2019-01_sample.csv /user/s3400652/outputNYC3 -Dmapred.map.tasks=2 -Dmapred.reduce.tasks=4
+hadoop jar Assignment-0.0.1-SNAPSHOT.jar /user/s3400652/fhv_tripdata_2015-01.csv /user/s3400652/outputNYC55
+
+hadoop jar Assignment-0.0.1-SNAPSHOT.jar arn:aws:s3:::nyc-tlc/trip+data/yellow_tripdata_2019-01.csv /user/s3400652/outputNYC5
+
+
+arn:aws:s3:::nyc-tlc/trip+data/yellow_tripdata_2019-01.csv
+
+hadoop fs -cat /user/s3400652/outputNYC/part-r-00000 | sort -n -k2 -r | head -n3
+hadoop fs -cat /user/s3400652/outputNYC/part-r-0000* | sort -n -k2 -r | head -n5   //concatanate output
+
++++++++++++++++++++++++++++++
+
+tranfer dataset to HDFS from AWS s3 bucket
+hadoop distcp s3a://nyc-tlc/"trip data"/yellow_tripdata_2018-12.csv /user/s3400652/
+
+copy jar file to master node
+hadoop fs -copyToLocal /user/s3400652/Assignment-0.0.1-SNAPSHOT.jar /home/hadoop/
+
+Deploy jar file
+hadoop jar Assignment-0.0.1-SNAPSHOT.jar edu.rmit.cosc2637.s3400652.Assignment.NYCDriver
+
