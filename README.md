@@ -16,15 +16,14 @@ Load this zip file to eclipse workspace.
 
 
 ### Upload standalone .jar file from local computer to HDFS file system through HUE
-=================================================================================
-Drag and drop the .jar file to HDFS (location - Home/user/s3400652) through HUE web interface.
 
+Drag and drop the .jar file to HDFS (location - Home/user/s3400652) through HUE web interface.
 
 [** - destination location has to be correctly set]
 
 
 ### Copy .jar from HDFS to cluster master node through EMR CLI
-===============================================================
+
 hadoop fs -copyToLocal /user/s3400652/Assignment-0.0.1-SNAPSHOT_yellow.jar /home/hadoop/
 hadoop fs -copyToLocal /user/s3400652/Assignment-0.0.1-SNAPSHOT_yellow_combiner.jar /home/hadoop/
 hadoop fs -copyToLocal /user/s3400652/Assignment-0.0.1-SNAPSHOT_yellow_IMC.jar /home/hadoop/
@@ -35,7 +34,7 @@ Experiment were conducted on NYC TLC Yellow Taxi Trip Data .csv for year 2019. [
 are used in for analysis]
 
 ### Fetch Yellow Trip Data files from AWS S3 bucket to HDFS file system through EMR command prompt (six files were copied)
-==========================================================================================================================
+
 hadoop distcp s3a://nyc-tlc/"trip data"/yellow_tripdata_2019-01.csv /user/s3400652/
 hadoop distcp s3a://nyc-tlc/"trip data"/yellow_tripdata_2019-02.csv /user/s3400652/
 hadoop distcp s3a://nyc-tlc/"trip data"/yellow_tripdata_2019-03.csv /user/s3400652/
@@ -46,7 +45,7 @@ hadoop distcp s3a://nyc-tlc/"trip data"/yellow_tripdata_2019-06.csv /user/s34006
 [** - make sure destination "/user/s3400652/" is correctly set accordingly]
 
 ### Deploy MapReduce .jar files in Hadoop and Run
-=============================================
+
 hadoop jar Assignment-0.0.1-SNAPSHOT_yellow.jar /user/s3400652/*.csv /user/s3400652/outputNYC_sixfile
 hadoop jar Assignment-0.0.1-SNAPSHOT_yellow_combiner.jar /user/s3400652/*.csv /user/s3400652/outputNYC_sixfile_combiner
 hadoop jar Assignment-0.0.1-SNAPSHOT_yellow_IMC.jar /user/s3400652/*.csv /user/s3400652/outputNYC_sixfile_IMC
@@ -56,14 +55,14 @@ under provided output folder name]
 
 
 ### Changing the cluster node size - run below shell script in jumphost CLI
-=======================================================================
+
 sh  boost_cluster.sh
 
 [** - this will increase the number of nodes in the EMR cluster by 2]
 
 
 ### Sort and view output files - below command will sort and show top most 10 results for given output file system
-==============================================================================================================
+
 hadoop fs -cat /user/s3400652/outputNYC_sixfile_combiner/part-r-0000* | sort -g -k2 -r | head -n10
 
 [** - output file path has to be correcty set; in above example the output files path is "/user/s3400652/outputNYC_sixfile_combiner"]
