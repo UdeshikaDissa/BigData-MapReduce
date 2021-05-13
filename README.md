@@ -1,5 +1,5 @@
 # BigData-MapReduce
-This BigData study intends to identify the most revenue generating Taxi zones in New York City for year 2019. Three MapReduce algorithms were developed and their performance were analyzed on different size of input datasets and on different size clusters in EMR.
+This BigData study intends to identify the most revenue-generating Taxi zones in New York City for the year 2019. Three MapReduce algorithms were developed and their performance was analyzed on different size of input datasets and different size clusters in EMR.
 
 ## Steps
 ### Source Java Code
