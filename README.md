@@ -3,15 +3,12 @@ This BigData study intends to identify the most revenue-generating Taxi zones in
 
 ## Steps
 ### Source Java Code
-================
 The zip file containing Java source code package is located at
 ~~\Package - s3400652\Java Source Code\Assignment.zip
 
 Load this zip file to eclipse workspace.
 
-
 ### Build standalone .jar file from Java MapReduce project
-======================================================
 - The dependancies (.pom) have correclty been set in the provided Java application package
 - Follow the standard procedure to build standalone .jar file in eclipse-workspace through Maven build
 
